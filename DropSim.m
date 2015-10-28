@@ -3,8 +3,8 @@ function DropSim(n)
 %   n: maximum number of discrete steps in simulation
 
 %Initialize all variables used in calculations
-x0 = [0, 1750];  %initial positions (x,y) (m)
-v0 = [60, 60];  %initial velocities (x,y) (m/s)
+x0 = [0, 1750]; %initial positions (x,y) (m)
+v0 = [10, 0];   %initial velocities (x,y) (m/s)
 g = 9.81;       %gravitational acceleration (m/s^2)
 dt = 0.005;     %time step (sec)
 m = 8;          %mass of projectile (kg)
@@ -100,6 +100,16 @@ plot((1:e)*dt, v(2,1:e));
 title('Vertical Velocity of Projectile VS Time');
 ylabel('m/s');
 xlabel('Sec');
+figure;
+plot((1:e)*dt,x(2,1:e));
+title('Altitude VS Time');
+xlabel('Sec');
+ylabel('Y (m)');
+figure;
+plot((1:e)*dt,x(1,1:e));
+title('Distance Down Range VS Time');
+xlabel('Sec');
+ylabel('X (m)');
 
 %Print out results
 fprintf('Time to Impact: %3.4f Sec.\n',e*dt);
