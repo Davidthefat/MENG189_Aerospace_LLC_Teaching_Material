@@ -3,8 +3,8 @@ function DropSim(n)
 %   n: maximum number of discrete steps in simulation
 
 %Initialize all variables used in calculations
-x0 = [0, 250];  %initial positions (x,y) (m)
-v0 = [60, 20];  %initial velocities (x,y) (m/s)
+x0 = [0, 1750];  %initial positions (x,y) (m)
+v0 = [60, 60];  %initial velocities (x,y) (m/s)
 g = 9.81;       %gravitational acceleration (m/s^2)
 dt = 0.005;     %time step (sec)
 m = 8;          %mass of projectile (kg)
@@ -64,9 +64,9 @@ for i = 2:n
     %   to projectile
     D = cD * rho * v_net^2 * ref_A / 2;
     %Horizontal component of drag is only force in the horizontal direction
-    a(1,i) = -D*cos(T(i));
+    a(1,i) = -D*cos(T(i))/m;
     %Vertical component of acceleration includes gravity and drag
-    a(2,i) = D*sin(T(i))-g;
+    a(2,i) = D*sin(T(i))/m-g;
     %Velocity and acceleration are calculated using Euler method
     v(1,i) = v(1,i-1)+dt*a(1,i);
     v(2,i) = v(2,i-1)+dt*a(2,i);
